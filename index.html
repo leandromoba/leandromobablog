@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leandro Moba - Desenvolvedor Full-Stack e Especialista em Cibersegurança">
+    <meta name="keywords" content="Leandro Moba, programador, cibersegurança, Java, Python, C, MySQL, SQLite">
+    <meta name="author" content="Leandro Moba">
+    <title>Leandro Moba | Mestre em Tecnologia e Segurança</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary: #0a0b1e;    /* Azul escuro profundo */
+            --secondary: #12132a;  /* Tom secundário elegante */
+            --accent: #253c67;     /* Azul tecnológico */
+            --highlight: #ff375f;  /* Vermelho vibrante */
+            --text: #eef1f5;      /* Branco suave */
+            --shadow: rgba(0, 0, 0, 0.9);
+            --gradient: linear-gradient(135deg, #0a0b1e, #253c67);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Cabeçalho */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 11, 30, 0.98);
+            backdrop-filter: blur(30px);
+            padding: 1.5rem 5rem;
+            z-index: 5000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--highlight);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: neonGlow 2s infinite alternate;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: all 0.5s ease;
+        }
+
+        nav ul li {
+            margin-left: 4rem;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.6s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 4px;
+            background: var(--highlight);
+            bottom: -10px;
+            left: 0;
+            transition: width 0.6s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--highlight);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 11, 30, 0.8);
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 1300px;
+            padding: 0 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 6rem;
+            color: var(--highlight);
+            text-shadow: 0 0 60px rgba(255, 55, 95, 0.9);
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .hero-text p {
+            font-size: 2.2rem;
+            margin: 2rem 0;
+            color: var(--text);
+            animation: fadeInUp 1.8s ease-out 0.6s both;
+        }
+
+        .hero-photo {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 7px solid var(--highlight);
+            box-shadow: 0 0 70px rgba(255, 55, 95, 0.7);
+            animation: photoZoom 2s ease-out;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Seções */
+        .section {
+            padding: 10rem 5rem;
+            background: var(--secondary);
+            margin: 5rem auto;
+            max-width: 1500px;
+            border-radius: 30px;
+            box-shadow: 0 25px 60px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        .section h2 {
+            font-size: 4rem;
+            color: var(--highlight);
+            margin-bottom: 4rem;
+            text-align: center;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 120px;
+            height: 6px;
+            background: var(--highlight);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Habilidades */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            padding: 4rem 0;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.7s ease;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 55, 95, 0.5);
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 20px 50px rgba(255, 55, 95, 0.6);
+            border-color: var(--highlight);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 6000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--secondary);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 50px var(--shadow);
+            animation: modalFadeIn 0.6s ease-out;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            color: var(--highlight);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-content p {
+            font-size: 1.4rem;
+            color: var(--text);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: var(--highlight);
+            cursor: pointer;
+            transition: color 0.4s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        /* Contato */
+        .contact-links {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 4rem;
+            transition: all 0.5s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--highlight);
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem;
+            background: var(--primary);
+            text-align: center;
+            border-top: 4px solid rgba(255, 55, 95, 0.4);
+        }
+
+        /* Animações */
+        @keyframes neonGlow {
+            0% { text-shadow: 0 0 15px var(--highlight), 0 0 30px var(--highlight); }
+            100% { text-shadow: 0 0 30px var(--highlight), 0 0 60px var(--highlight), 0 0 100px var(--highlight); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(80px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes photoZoom {
+            from { opacity: 0; transform: scale(0.7); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 1400px) {
+            .hero-text h1 { font-size: 5rem; }
+            .hero-photo { width: 340px; height: 340px; }
+            .section { padding: 8rem 4rem; }
+            .skills-grid { gap: 3.5rem; }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content { flex-direction: column; padding: 0 3rem; }
+            .hero-photo { margin-top: 3rem; width: 300px; height: 300px; }
+            .hero-text h1 { font-size: 4rem; }
+            .hero-text p { font-size: 1.8rem; }
+            .section { padding: 7rem 3rem; }
+            .section h2 { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1.5rem 3rem; }
+            .logo { font-size: 2rem; }
+            .menu-toggle { display: block; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 11, 30, 0.95);
+                padding: 2rem;
+                box-shadow: 0 10px 30px var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 1.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-text h1 { font-size: 3rem; }
+            .hero-text p { font-size: 1.6rem; }
+            .section { padding: 6rem 2rem; }
+            .section h2 { font-size: 3rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .skill-card { padding: 2.5rem; }
+            .social-links a { font-size: 3.5rem; }
+            .modal-content { padding: 2.5rem; max-width: 90%; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 1rem 2rem; }
+            .hero-content { padding: 0 1.5rem; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text p { font-size: 1.3rem; }
+            .hero-photo { width: 250px; height: 250px; }
+            .section { padding: 5rem 1.5rem; }
+            .section h2 { font-size: 2.5rem; }
+            .skill-card i { font-size: 2.5rem; }
+            .skill-card h3 { font-size: 1.8rem; }
+            .skill-card p { font-size: 1.1rem; }
+            .social-links a { font-size: 3rem; }
+            .modal-content h3 { font-size: 2rem; }
+            .modal-content p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Leandro Moba</div>
+        <nav>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#ciberseguranca">Cibersegurança</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Leandro Moba</h1>
+                <p>Arquiteto de Soluções | Defensor Digital</p>
+            </div>
+            <div class="hero-photo">
+                <img src="imagems/IMG_7528.jpg" alt="Foto de Leandro Moba">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Sou Leandro Moba, um especialista em tecnologia que transforma ideias em realidade com código impecável e segurança impenetrável. Minha paixão é inovar e proteger o mundo digital.</p>
+    </section>
+
+    <section class="section" id="habilidades">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-card" data-lang="java">
+                <i class="fab fa-java"></i>
+                <h3>Java</h3>
+                <p>Sistemas empresariais robustos</p>
+            </div>
+            <div class="skill-card" data-lang="html">
+                <i class="fab fa-html5"></i>
+                <h3>HTML/CSS</h3>
+                <p>Interfaces visuais premium</p>
+            </div>
+            <div class="skill-card" data-lang="js">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>Interatividade de elite</p>
+            </div>
+            <div class="skill-card" data-lang="python">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+                <p>Automação e segurança</p>
+            </div>
+            <div class="skill-card" data-lang="php">
+                <i class="fab fa-php"></i>
+                <h3>PHP</h3>
+                <p>Backend poderoso</p>
+            </div>
+            <div class="skill-card" data-lang="react">
+                <i class="fab fa-react"></i>
+                <h3>React Native</h3>
+                <p>Aplicativos móveis nativos</p>
+            </div>
+            <div class="skill-card" data-lang="cordova">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Cordova</h3>
+                <p>Soluções híbridas</p>
+            </div>
+            <div class="skill-card" data-lang="c">
+                <i class="fas fa-code"></i>
+                <h3>C</h3>
+                <p>Programação de baixo nível</p>
+            </div>
+            <div class="skill-card" data-lang="mysql">
+                <i class="fas fa-database"></i>
+                <h3>MySQL</h3>
+                <p>Bancos relacionais</p>
+            </div>
+            <div class="skill-card" data-lang="sqlite">
+                <i class="fas fa-server"></i>
+                <h3>SQLite</h3>
+                <p>Armazenamento leve</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="ciberseguranca">
+        <h2>Cibersegurança</h2>
+        <p>Minha expertise em cibersegurança garante sistemas blindados contra ameaças, com criptografia avançada e estratégias de defesa proativas.</p>
+    </section>
+
+    <section class="section" id="contato">
+        <h2>Contato</h2>
+        <div class="contact-links">
+            <div class="social-links">
+                <a href="https://twitter.com/LeandroMoba" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com/LeandroMoba" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/LeandroMoba" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@LeandroMoba" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Leandro Moba | Criado com Maestria</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="skillModal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Menu hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Rolagem suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Animação de entrada
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => {
+            section.classList.add('hidden');
+            observer.observe(section);
+        });
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            .hidden { opacity: 0; transform: translateY(100px); transition: all 1s ease; }
+            .visible { opacity: 1; transform: translateY(0); }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // Partículas no hero
+        const hero = document.querySelector('.hero');
+        for (let i = 0; i < 200; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = `${Math.random() * 10}px`;
+            particle.style.height = particle.style.width;
+            particle.style.background = 'rgba(255, 55, 95, 0.3)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animation = `drift ${Math.random() * 6 + 3}s infinite ease-in-out`;
+            hero.appendChild(particle);
+        }
+
+        styleSheet.textContent += `
+            @keyframes drift {
+                0% { transform: translate(0, 0); opacity: 0.9; }
+                50% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px); opacity: 0.4; }
+                100% { transform: translate(0, 0); opacity: 0.9; }
+            }
+        `;
+
+        // Modal para habilidades
+        const skillCards = document.querySelectorAll('.skill-card');
+        const modal = document.getElementById('skillModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalClose = document.querySelector('.modal-close');
+
+        const skillDetails = {
+            java: { title: 'Java', desc: 'Construo aplicações robustas e escaláveis, perfeitas para sistemas corporativos e soluções complexas.' },
+            html: { title: 'HTML/CSS', desc: 'Desenvolvo interfaces elegantes e responsivas, otimizadas para desempenho e usabilidade.' },
+            js: { title: 'JavaScript', desc: 'Crio experiências interativas e dinâmicas, elevando o padrão de aplicações web.' },
+            python: { title: 'Python', desc: 'Uso para automação, análise de dados e ferramentas de cibersegurança avançadas.' },
+            php: { title: 'PHP', desc: 'Desenvolvo backends eficientes, integrando sistemas com bancos de dados robustos.' },
+            react: { title: 'React Native', desc: 'Produzo aplicativos móveis nativos de alta qualidade para iOS e Android.' },
+            cordova: { title: 'Cordova', desc: 'Crio apps híbridos multiplataforma com eficiência e rapidez.' },
+            c: { title: 'C', desc: 'Domino programação de baixo nível para sistemas críticos e otimizações extremas.' },
+            mysql: { title: 'MySQL', desc: 'Gerencio bancos relacionais complexos com alta performance.' },
+            sqlite: { title: 'SQLite', desc: 'Implemento soluções de armazenamento leves e rápidas para aplicações locais.' }
+        };
+
+        skillCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const lang = card.getAttribute('data-lang');
+                modalTitle.textContent = skillDetails[lang].title;
+                modalDescription.textContent = skillDetails[lang].desc;
+                modal.style.display = 'flex';
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
