@@ -386,7 +386,11 @@
         }
 
         @media (max-width: 1024px) {
-            .hero-content { flex-direction: column; padding: 0 3rem; }
+            .hero-content { 
+                flex-direction: column; 
+                padding: 0 3rem; 
+                justify-content: center;
+            }
             .hero-photo { margin-top: 3rem; width: 300px; height: 300px; }
             .hero-text h1 { font-size: 4rem; }
             .hero-text p { font-size: 1.8rem; }
@@ -422,21 +426,29 @@
 
             .hero-text h1 { font-size: 3rem; }
             .hero-text p { font-size: 1.6rem; }
-            .section { padding: 6rem 2rem; }
+            .section { 
+                padding: 6rem 2rem; 
+                margin: 3rem auto;
+            }
             .section h2 { font-size: 3rem; }
             .skills-grid { grid-template-columns: 1fr; gap: 3rem; }
             .skill-card { padding: 2.5rem; }
             .social-links a { font-size: 3.5rem; }
             .modal-content { padding: 2.5rem; max-width: 90%; }
+            footer { padding: 3rem 2rem; }
         }
 
         @media (max-width: 480px) {
             header { padding: 1rem 2rem; }
+            .logo { font-size: 1.6rem; }
             .hero-content { padding: 0 1.5rem; }
             .hero-text h1 { font-size: 2.2rem; }
             .hero-text p { font-size: 1.3rem; }
             .hero-photo { width: 250px; height: 250px; }
-            .section { padding: 5rem 1.5rem; }
+            .section { 
+                padding: 5rem 1.5rem; 
+                margin: 2rem auto;
+            }
             .section h2 { font-size: 2.5rem; }
             .skill-card i { font-size: 2.5rem; }
             .skill-card h3 { font-size: 1.8rem; }
@@ -444,6 +456,7 @@
             .social-links a { font-size: 3rem; }
             .modal-content h3 { font-size: 2rem; }
             .modal-content p { font-size: 1.2rem; }
+            footer { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
